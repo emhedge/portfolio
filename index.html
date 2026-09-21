@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evyn Hedgpeth — Automation Engineer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#" onclick="showMain()">evyn.hedgpeth</a>
+  <div class="nav-links">
+    <a class="nav-link" href="#projects" onclick="showMain()">Projects</a>
+    <a class="nav-link" href="#about" onclick="showMain()">About</a>
+    <a class="nav-link" href="mailto:emh5652@gmail.com">Contact</a>
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle dark mode">
+      <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MAIN PAGE -->
+<div class="main-page" id="main-page">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">automation engineer</div>
+        <h1 class="hero-name">Evyn Hedgpeth</h1>
+        <p class="hero-desc">I build workflows that connect systems, move data, and cut manual work — using n8n, APIs, and whatever tool fits the job. Based in Taipei.</p>
+        <div class="hero-links">
+          <a class="hero-link" href="mailto:emh5652@gmail.com">emh5652@gmail.com</a>
+          <a class="hero-link" href="https://linkedin.com/in/evynhedgpeth" target="_blank">LinkedIn</a>
+          <a class="hero-link" href="https://github.com/emhedge" target="_blank">GitHub</a>
+          <a class="hero-link" href="https://medium.com/@emhedge" target="_blank">Medium</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="status-badge"><div class="status-dot"></div>open to work</div>
+        <div class="hero-meta">
+          Taipei, Taiwan<br>
+          CompTIA Sec+ · Net+<br>
+          github.com/emhedge
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <span class="section-count">6 workflows</span>
+      </div>
+      <div class="projects-grid">
+
+        <a class="project-card" href="#" onclick="showDetail('lead-intake'); return false;">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="ptag ptag-webhook">webhook</span>
+              <span class="ptag ptag-scheduled">enrichment</span>
+            </div>
+            <span class="project-arrow">›</span>
+          </div>
+          <div class="project-name">Lead Intake CRM</div>
+          <div class="project-desc">Validates, deduplicates, and enriches inbound leads before storing and notifying — all from a single form submission.</div>
+          <div class="project-pipeline">webhook  validate  dedupe  enrich  store  notify</div>
+        </a>
+
+        <a class="project-card" href="#" onclick="showDetail('woo-sync'); return false;">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="ptag ptag-scheduled">scheduled</span>
+            </div>
+            <span class="project-arrow">›</span>
+          </div>
+          <div class="project-name">WooCommerce Order Sync</div>
+          <div class="project-desc">Pulls orders from a WooCommerce REST API on a schedule, flattens nested JSON, deduplicates, and appends only new records to Google Sheets.</div>
+          <div class="project-pipeline">schedule  fetch api  flatten  dedupe  append</div>
+        </a>
+
+        <a class="project-card" href="#" onclick="showDetail('crm-sync'); return false;">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="ptag ptag-scheduled">scheduled</span>
+            </div>
+            <span class="project-arrow">›</span>
+          </div>
+          <div class="project-name">CRM Contact Sync</div>
+          <div class="project-desc">Detects new and updated contacts between two systems using change detection, then routes each to append or update — no duplicates, no overwrites.</div>
+          <div class="project-pipeline">schedule  read source  read target  diff  fork  write</div>
+        </a>
+
+        <a class="project-card" href="#" onclick="showDetail('stock-bot'); return false;">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="ptag ptag-llm">llm</span>
+              <span class="ptag ptag-scheduled">scheduled</span>
+            </div>
+            <span class="project-arrow">›</span>
+          </div>
+          <div class="project-name">Stock News Digest Bot</div>
+          <div class="project-desc">Pulls RSS feeds for 20 S&P 500 tickers, scores each headline 1–10 for market relevance using a local LLM, and delivers a bucketed Telegram digest pre-market.</div>
+          <div class="project-pipeline">rss  dedupe  filter  llm score  bucket  telegram</div>
+        </a>
+
+        <a class="project-card" href="#" onclick="showDetail('health-monitor'); return false;">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="ptag ptag-monitor">monitor</span>
+            </div>
+            <span class="project-arrow">›</span>
+          </div>
+          <div class="project-name">Workflow Health Monitor</div>
+          <div class="project-desc">Centralized error logging and daily health reporting across all n8n workflows. Any failure writes to a Google Sheet and fires an immediate Telegram alert.</div>
+          <div class="project-pipeline">error trigger  alert  log  daily digest</div>
+        </a>
+
+        <a class="project-card" href="#" onclick="showDetail('homelab'); return false;">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="ptag ptag-infra">infrastructure</span>
+            </div>
+            <span class="project-arrow">›</span>
+          </div>
+          <div class="project-name">Virtualized Network Homelab</div>
+          <div class="project-desc">Proxmox VE host behind a pfSense firewall, segmented into six isolated subnets with per-segment ACLs, DHCP, DNS, and NAT. Includes Windows AD, OpenVPN, and a Splunk SIEM.</div>
+          <div class="project-pipeline">proxmox  pfsense  vlans  ad  splunk  openvpn</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm an automation engineer based in Taipei with a background that cuts across technical writing, security analysis, and systems work. I came up through roles that required understanding how complex systems fit together and explaining them clearly, which turns out to be most of what automation engineering is.</p>
+          <p>Most recently I was at Cooler Master building and maintaining a multilingual technical knowledge base, and before that at Proton AG doing spam and abuse analysis, where I worked with ML clusters, OSINT, and internal tooling to detect and counter threats at scale.</p>
+          <p>These days I'm focused on workflow automation: building n8n pipelines that move data between systems, handle edge cases gracefully, and don't need babysitting. I run a Proxmox homelab for security and infrastructure work, and I have written about my security projects on Medium.</p>
+        </div>
+        <div class="about-sidebar">
+          <div class="about-sidebar-section">
+            <div class="about-sidebar-title">Automation</div>
+            <div class="skill-row">
+              <span class="skill-chip">n8n</span>
+              <span class="skill-chip">REST APIs</span>
+              <span class="skill-chip">webhooks</span>
+              <span class="skill-chip">Power Automate</span>
+              <span class="skill-chip">Ollama</span>
+            </div>
+          </div>
+          <div class="about-sidebar-section">
+            <div class="about-sidebar-title">Infrastructure</div>
+            <div class="skill-row">
+              <span class="skill-chip">Proxmox VE</span>
+              <span class="skill-chip">pfSense</span>
+              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">Linux</span>
+              <span class="skill-chip">Windows AD</span>
+            </div>
+          </div>
+          <div class="about-sidebar-section">
+            <div class="about-sidebar-title">Security</div>
+            <div class="skill-row">
+              <span class="skill-chip">Splunk</span>
+              <span class="skill-chip">Wireshark</span>
+              <span class="skill-chip">Nmap</span>
+              <span class="skill-chip">OSINT</span>
+            </div>
+          </div>
+          <div class="about-sidebar-section">
+            <div class="about-sidebar-title">Certifications</div>
+            <div class="cert-row">
+              <span class="cert-chip">CompTIA Security+</span>
+              <span class="cert-chip">CompTIA Network+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Evyn Hedgpeth · Taipei</span>
+      <div class="footer-links">
+        <a class="footer-link" href="mailto:emh5652@gmail.com">Email</a>
+        <a class="footer-link" href="https://linkedin.com/in/evynhedgpeth" target="_blank">LinkedIn</a>
+        <a class="footer-link" href="https://github.com/emhedge" target="_blank">GitHub</a>
+        <a class="footer-link" href="https://medium.com/@emhedge" target="_blank">Medium</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- PROJECT DETAIL PAGES -->
+<div class="detail-page" id="detail-lead-intake">
+  <div style="background:var(--surface); border-bottom:1px solid var(--border);">
+    <div style="max-width:900px;margin:0 auto;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;">
+      <div class="breadcrumb">
+        <a onclick="showMain()">evyn.hedgpeth</a>
+        <span class="breadcrumb-sep">/</span>
+        <a onclick="showMain(); document.getElementById('projects').scrollIntoView()">projects</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">lead-intake-crm</span>
+      </div>
+      <div class="detail-status"><div class="status-dot"></div>active · webhook</div>
+    </div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="detail-hero">
+      <div class="detail-tags">
+        <span class="ptag ptag-webhook">webhook</span>
+        <span class="ptag ptag-scheduled">enrichment</span>
+      </div>
+      <div class="detail-title">Lead Intake CRM Pipeline</div>
+      <div class="detail-desc">End-to-end lead intake automation — validates, deduplicates, enriches, stores, and notifies across multiple channels from a single form submission.</div>
+      <div class="detail-meta">
+        <div class="detail-meta-item">trigger <span>HTTP POST webhook</span></div>
+        <div class="detail-meta-item">storage <span>Google Sheets</span></div>
+        <div class="detail-meta-item">notifications <span>Telegram + Gmail</span></div>
+        <div class="detail-meta-item">enrichment <span>Abstract API</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="detail-metrics">
+      <div class="detail-metric"><div class="detail-metric-val">8</div><div class="detail-metric-label">nodes</div></div>
+      <div class="detail-metric"><div class="detail-metric-val">3</div><div class="detail-metric-label">branch paths</div></div>
+      <div class="detail-metric"><div class="detail-metric-val">4</div><div class="detail-metric-label">external services</div></div>
+      <div class="detail-metric"><div class="detail-metric-val">1</div><div class="detail-metric-label">error workflow</div></div>
+    </div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="detail-body">
+      <div class="detail-main">
+        <div class="problem-box">
+          <div class="d-section-title" style="margin-bottom:6px;">The problem</div>
+          Manual lead intake creates duplicate records, misses enrichment opportunities, and leaves teams waiting for notifications. This workflow automates the full intake cycle — from form submission to team alert — with deduplication and company enrichment built in.
+        </div>
+        <div class="d-section-title">Pipeline</div>
+        <div class="pipeline-nodes">
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Lead Webhook</div><div class="pipe-node-detail">POST /webhook/new-lead · responds via downstream node</div></div></div>
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Map & Timestamp Fields</div><div class="pipe-node-detail">name · email · company · message · source · submitted_at</div></div></div>
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">?</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Validate Required Fields</div><div class="pipe-node-detail">email + company must be non-empty strings</div><div class="pipe-branches"><span class="pipe-branch branch-t">true  dedupe</span><span class="pipe-branch branch-f">false  400</span></div></div></div>
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Lookup Existing Leads</div><div class="pipe-node-detail">Google Sheets · filter name + email · always output data</div></div></div>
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">?</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Is Duplicate?</div><div class="pipe-node-detail">filters placeholder rows · outputs isDuplicate boolean</div><div class="pipe-branches"><span class="pipe-branch branch-t">true  200 duplicate</span><span class="pipe-branch branch-f">false  enrich</span></div></div></div>
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--purple-dim);color:var(--purple)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Enrich Company Data</div><div class="pipe-node-detail">Abstract API · domain from email · industry · headcount · country</div></div></div>
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Store Lead in Sheet</div><div class="pipe-node-detail">append row · all fields including enriched columns</div></div></div>
+          <div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--green-dim);color:var(--green)"></div></div><div class="pipe-right"><div class="pipe-node-name">Notify + Confirm</div><div class="pipe-node-detail">Telegram team alert · Gmail to lead · 200 response</div></div></div>
+        </div>
+        <div class="demo-box">
+          <div class="demo-screen">
+            <a href="https://youtu.be/5_fdfmBn4ts" target="_blank" class="demo-play-btn"></a>
+          </div>
+          <div class="demo-label"><span>demo · end-to-end walkthrough</span><span>youtube </span></div>
+        </div>
+      </div>
+      <div class="detail-sidebar">
+        <div class="d-section-title">Tech stack</div>
+        <div class="stack-chips">
+          <span class="stack-chip">n8n</span><span class="stack-chip">Google Sheets</span><span class="stack-chip">Abstract API</span><span class="stack-chip">Telegram</span><span class="stack-chip">Gmail SMTP</span><span class="stack-chip">ngrok</span><span class="stack-chip">Docker</span><span class="stack-chip">HTML/JS</span>
+        </div>
+        <div class="d-section-title">Links</div>
+        <div class="sidebar-links">
+          <a class="sidebar-btn" href="https://github.com/emhedge/n8n-Lead-Intake-CRM-Workflow" target="_blank"><span class="sidebar-btn-icon"></span><span>GitHub repo</span><span class="sidebar-btn-arrow">›</span></a>
+          <a class="sidebar-btn" href="https://youtu.be/5_fdfmBn4ts" target="_blank"><span class="sidebar-btn-icon"></span><span>Watch demo</span><span class="sidebar-btn-arrow">›</span></a>
+        </div>
+        <div class="d-section-title">Key decisions</div>
+        <div class="decisions">
+          <div class="decision"><div class="decision-q">Why Google Sheets over a database?</div><div class="decision-a">Zero setup, native n8n node, instantly shareable — right tool for a demo datastore.</div></div>
+          <div class="decision"><div class="decision-q">Dedupe key</div><div class="decision-a">Name + email rather than email alone — handles same-email, different-person edge cases.</div></div>
+          <div class="decision"><div class="decision-q">Respond mode</div><div class="decision-a">Using Respond to Webhook node so each branch returns a meaningful HTTP status.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-footer">
+      <button class="detail-nav-btn" onclick="showMain()"> back to projects</button>
+      <button class="detail-nav-btn" onclick="showDetail('woo-sync')">woocommerce-order-sync </button>
+    </div>
+  </div>
+</div>
+
+<div class="detail-page" id="detail-woo-sync">
+  <div style="background:var(--surface);border-bottom:1px solid var(--border);"><div style="max-width:900px;margin:0 auto;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;"><div class="breadcrumb"><a onclick="showMain()">evyn.hedgpeth</a><span class="breadcrumb-sep">/</span><a onclick="showMain()">projects</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">woocommerce-order-sync</span></div><div class="detail-status"><div class="status-dot"></div>scheduled · 15 min</div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-hero"><div class="detail-tags"><span class="ptag ptag-scheduled">scheduled</span></div><div class="detail-title">WooCommerce Order Sync</div><div class="detail-desc">Pulls orders from a WooCommerce REST API on a 15-minute schedule, flattens nested JSON into clean rows, deduplicates against an existing Google Sheet, and appends only net-new records.</div><div class="detail-meta"><div class="detail-meta-item">trigger <span>schedule · every 15 min</span></div><div class="detail-meta-item">source <span>WooCommerce REST API</span></div><div class="detail-meta-item">storage <span>Google Sheets</span></div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;background:var(--surface);border-bottom:1px solid var(--border);"><div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-val">6</div><div class="detail-metric-label">nodes</div></div><div class="detail-metric"><div class="detail-metric-val">4</div><div class="detail-metric-label">orders fetched</div></div><div class="detail-metric"><div class="detail-metric-val">0</div><div class="detail-metric-label">duplicates written</div></div><div class="detail-metric"><div class="detail-metric-val">1</div><div class="detail-metric-label">error workflow</div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-body"><div class="detail-main"><div class="problem-box"><div class="d-section-title" style="margin-bottom:6px;">The problem</div>WooCommerce's native integrations often miss custom metadata fields — VAT numbers, order attributes, and other fields that don't map cleanly to ERP or CRM systems. This workflow bridges that gap: pulling raw order data, transforming it to match a target schema, and syncing only net-new records on a schedule.</div><div class="d-section-title">Pipeline</div><div class="pipeline-nodes"><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--green-dim);color:var(--green)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Schedule Trigger</div><div class="pipe-node-detail">every 15 minutes</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Fetch WooCommerce Orders</div><div class="pipe-node-detail">HTTP GET · Basic Auth · consumer key + secret</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">{}</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Flatten Order Data</div><div class="pipe-node-detail">merges billing · shipping · line items into flat rows</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Get Existing Order IDs</div><div class="pipe-node-detail">Google Sheets read · always output data</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">{}</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Filter New Orders Only</div><div class="pipe-node-detail">filters by order_id · skips if already in sheet</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--green-dim);color:var(--green)"></div></div><div class="pipe-right"><div class="pipe-node-name">Sync Orders to Sheet</div><div class="pipe-node-detail">append row · all mapped fields</div></div></div></div><div class="demo-box"><div class="demo-screen"><a href="https://youtu.be/yNWKVbzxUQU" target="_blank" class="demo-play-btn"></a></div><div class="demo-label"><span>demo · sync in action</span><span>youtube </span></div></div></div><div class="detail-sidebar"><div class="d-section-title">Tech stack</div><div class="stack-chips"><span class="stack-chip">n8n</span><span class="stack-chip">WooCommerce API</span><span class="stack-chip">LocalWP</span><span class="stack-chip">Google Sheets</span><span class="stack-chip">ngrok</span><span class="stack-chip">Docker</span></div><div class="d-section-title">Links</div><div class="sidebar-links"><a class="sidebar-btn" href="https://github.com/emhedge/n8n-woocommerce-order-sync" target="_blank"><span class="sidebar-btn-icon"></span><span>GitHub repo</span><span class="sidebar-btn-arrow">›</span></a><a class="sidebar-btn" href="https://youtu.be/yNWKVbzxUQU" target="_blank"><span class="sidebar-btn-icon"></span><span>Watch demo</span><span class="sidebar-btn-arrow">›</span></a></div><div class="d-section-title">Key decisions</div><div class="decisions"><div class="decision"><div class="decision-q">Why dedupe by order_id?</div><div class="decision-a">Orders don't change their ID — safest unique key for append-only sync.</div></div><div class="decision"><div class="decision-q">Always Output Data</div><div class="decision-a">Enables the workflow to continue when the sheet is empty on first run.</div></div></div></div></div><div class="detail-footer"><button class="detail-nav-btn" onclick="showDetail('lead-intake')"> lead-intake-crm</button><button class="detail-nav-btn" onclick="showDetail('crm-sync')">crm-contact-sync </button></div></div>
+</div>
+
+<div class="detail-page" id="detail-crm-sync">
+  <div style="background:var(--surface);border-bottom:1px solid var(--border);"><div style="max-width:900px;margin:0 auto;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;"><div class="breadcrumb"><a onclick="showMain()">evyn.hedgpeth</a><span class="breadcrumb-sep">/</span><a onclick="showMain()">projects</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">crm-contact-sync</span></div><div class="detail-status"><div class="status-dot"></div>scheduled · 15 min</div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-hero"><div class="detail-tags"><span class="ptag ptag-scheduled">scheduled</span></div><div class="detail-title">CRM Contact Sync</div><div class="detail-desc">Detects new and updated contacts between a source and target system, then routes each to the correct operation — append for new, update-in-place for changed. No duplicates, no full overwrites.</div><div class="detail-meta"><div class="detail-meta-item">trigger <span>schedule · every 15 min</span></div><div class="detail-meta-item">change key <span>last_updated timestamp</span></div><div class="detail-meta-item">storage <span>Google Sheets (both ends)</span></div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;background:var(--surface);border-bottom:1px solid var(--border);"><div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-val">7</div><div class="detail-metric-label">nodes</div></div><div class="detail-metric"><div class="detail-metric-val">2</div><div class="detail-metric-label">branch paths</div></div><div class="detail-metric"><div class="detail-metric-val">delta</div><div class="detail-metric-label">sync type</div></div><div class="detail-metric"><div class="detail-metric-val">1</div><div class="detail-metric-label">error workflow</div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-body"><div class="detail-main"><div class="problem-box"><div class="d-section-title" style="margin-bottom:6px;">The problem</div>Syncing contacts between systems usually means full overwrites or manual exports. This workflow does delta sync — only writing what changed, determined by comparing timestamps — which is the pattern used in production ERP and CRM integrations.</div><div class="d-section-title">Pipeline</div><div class="pipeline-nodes"><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--green-dim);color:var(--green)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Schedule Trigger</div><div class="pipe-node-detail">every 15 minutes</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Read CRM Source</div><div class="pipe-node-detail">Google Sheets · always output data</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Read CRM Target</div><div class="pipe-node-detail">Google Sheets · always output data</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">{}</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Detect New & Updated</div><div class="pipe-node-detail">compares contact_id + last_updated · outputs two arrays</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">?</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Fork: New vs Updated</div><div class="pipe-node-detail">two parallel paths based on array contents</div><div class="pipe-branches"><span class="pipe-branch branch-t">new  append</span><span class="pipe-branch branch-f">updated  update row</span></div></div></div></div><div class="demo-box"><div class="demo-screen"><a href="https://youtu.be/LksOR9IMEX8" target="_blank" class="demo-play-btn"></a></div><div class="demo-label"><span>demo · delta sync walkthrough</span><span>youtube </span></div></div></div><div class="detail-sidebar"><div class="d-section-title">Tech stack</div><div class="stack-chips"><span class="stack-chip">n8n</span><span class="stack-chip">Google Sheets</span><span class="stack-chip">Docker</span></div><div class="d-section-title">Links</div><div class="sidebar-links"><a class="sidebar-btn" href="https://github.com/emhedge/n8n-crm-contact-sync" target="_blank"><span class="sidebar-btn-icon"></span><span>GitHub repo</span><span class="sidebar-btn-arrow">›</span></a><a class="sidebar-btn" href="https://youtu.be/LksOR9IMEX8" target="_blank"><span class="sidebar-btn-icon"></span><span>Watch demo</span><span class="sidebar-btn-arrow">›</span></a></div><div class="d-section-title">Key decisions</div><div class="decisions"><div class="decision"><div class="decision-q">Why last_updated as change key?</div><div class="decision-a">Timestamp comparison is simple, reliable, and maps directly to how production CRMs track changes.</div></div><div class="decision"><div class="decision-q">Parallel fork pattern</div><div class="decision-a">Append and update are different Sheets operations — they need separate branches, not sequential nodes.</div></div></div></div></div><div class="detail-footer"><button class="detail-nav-btn" onclick="showDetail('woo-sync')"> woocommerce-order-sync</button><button class="detail-nav-btn" onclick="showDetail('stock-bot')">stock-news-digest </button></div></div>
+</div>
+
+<div class="detail-page" id="detail-stock-bot">
+  <div style="background:var(--surface);border-bottom:1px solid var(--border);"><div style="max-width:900px;margin:0 auto;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;"><div class="breadcrumb"><a onclick="showMain()">evyn.hedgpeth</a><span class="breadcrumb-sep">/</span><a onclick="showMain()">projects</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">stock-news-digest</span></div><div class="detail-status"><div class="status-dot"></div>scheduled · 7:30 AM EST</div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-hero"><div class="detail-tags"><span class="ptag ptag-llm">llm</span><span class="ptag ptag-scheduled">scheduled</span></div><div class="detail-title">Stock News Digest Bot</div><div class="detail-desc">Pulls Google News RSS feeds for 20 S&P 500 tickers, deduplicates near-identical headlines using Jaccard similarity, scores each for market relevance using a local LLM, and delivers a pre-market Telegram digest grouped by price bucket.</div><div class="detail-meta"><div class="detail-meta-item">trigger <span>7:30 AM EST daily</span></div><div class="detail-meta-item">model <span>llama3.2 via Ollama</span></div><div class="detail-meta-item">delivery <span>Telegram</span></div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;background:var(--surface);border-bottom:1px solid var(--border);"><div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-val">9</div><div class="detail-metric-label">nodes</div></div><div class="detail-metric"><div class="detail-metric-val">20</div><div class="detail-metric-label">tickers tracked</div></div><div class="detail-metric"><div class="detail-metric-val">1–10</div><div class="detail-metric-label">llm score range</div></div><div class="detail-metric"><div class="detail-metric-val">4</div><div class="detail-metric-label">price buckets</div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-body"><div class="detail-main"><div class="problem-box"><div class="d-section-title" style="margin-bottom:6px;">The problem</div>Financial news moves fast and is full of noise — duplicate headlines, ads, and low-signal commentary. This workflow filters it down to what matters: deduplicating by semantic similarity, dropping irrelevant content via a blacklist, scoring each remaining headline with a local LLM, and delivering only the highest-signal stories as rich messages.</div><div class="d-section-title">Pipeline</div><div class="pipeline-nodes"><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--green-dim);color:var(--green)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Build RSS Feed URLs</div><div class="pipe-node-detail">generates Google News RSS queries per ticker</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Fetch RSS Feeds</div><div class="pipe-node-detail">parallel RSS reads · one per URL</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Aggregate Articles</div><div class="pipe-node-detail">merges all feeds into single collection</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">{}</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Dedupe & Tag Articles</div><div class="pipe-node-detail">Jaccard similarity · max 2/company · attaches ticker + price</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">{}</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Filter & Clean</div><div class="pipe-node-detail">blacklist phrases · recency check</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--purple-dim);color:var(--purple)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Score & Summarize (LLM)</div><div class="pipe-node-detail">llama3.2 · rates 1–10 · one-sentence summary · SKIP if irrelevant</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)">{}</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Format & Bucket Messages</div><div class="pipe-node-detail">top 10  rich messages · rest  price-bucketed digest</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--green-dim);color:var(--green)"></div></div><div class="pipe-right"><div class="pipe-node-name">Send Telegram Digest</div><div class="pipe-node-detail">multi-message · 4096 char limit handled</div></div></div></div></div><div class="detail-sidebar"><div class="d-section-title">Tech stack</div><div class="stack-chips"><span class="stack-chip">n8n</span><span class="stack-chip">Ollama</span><span class="stack-chip">llama3.2</span><span class="stack-chip">Google News RSS</span><span class="stack-chip">Telegram</span><span class="stack-chip">Docker</span></div><div class="d-section-title">Links</div><div class="sidebar-links"><a class="sidebar-btn" href="https://github.com/emhedge/n8n-stock-news-digest" target="_blank"><span class="sidebar-btn-icon"></span><span>GitHub repo</span><span class="sidebar-btn-arrow">›</span></a></div><div class="d-section-title">Key decisions</div><div class="decisions"><div class="decision"><div class="decision-q">Why local LLM?</div><div class="decision-a">No API costs, no rate limits, runs offline. Ollama makes local inference straightforward.</div></div><div class="decision"><div class="decision-q">Jaccard similarity</div><div class="decision-a">Lightweight and effective for headline dedup — no embeddings needed for this use case.</div></div><div class="decision"><div class="decision-q">Price bucketing</div><div class="decision-a">Groups stocks by price range so the digest is scannable — high-priced and penny stocks don't compete for attention.</div></div></div></div></div><div class="detail-footer"><button class="detail-nav-btn" onclick="showDetail('crm-sync')"> crm-contact-sync</button><button class="detail-nav-btn" onclick="showDetail('health-monitor')">workflow-health-monitor </button></div></div>
+</div>
+
+<div class="detail-page" id="detail-health-monitor">
+  <div style="background:var(--surface);border-bottom:1px solid var(--border);"><div style="max-width:900px;margin:0 auto;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;"><div class="breadcrumb"><a onclick="showMain()">evyn.hedgpeth</a><span class="breadcrumb-sep">/</span><a onclick="showMain()">projects</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">workflow-health-monitor</span></div><div class="detail-status"><div class="status-dot"></div>active · error trigger</div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-hero"><div class="detail-tags"><span class="ptag ptag-monitor">monitor</span></div><div class="detail-title">Workflow Health Monitor</div><div class="detail-desc">Centralized error logging and daily health reporting across all n8n workflows. Any failure writes a structured record to Google Sheets and fires an immediate Telegram alert. A morning digest summarizes the previous 24 hours.</div><div class="detail-meta"><div class="detail-meta-item">trigger <span>Error Trigger + 7:00 AM schedule</span></div><div class="detail-meta-item">storage <span>Google Sheets</span></div><div class="detail-meta-item">alerts <span>Telegram</span></div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;background:var(--surface);border-bottom:1px solid var(--border);"><div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-val">2</div><div class="detail-metric-label">workflows</div></div><div class="detail-metric"><div class="detail-metric-val">5</div><div class="detail-metric-label">fields logged</div></div><div class="detail-metric"><div class="detail-metric-val">24h</div><div class="detail-metric-label">report window</div></div><div class="detail-metric"><div class="detail-metric-val">all</div><div class="detail-metric-label">workflows covered</div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-body"><div class="detail-main"><div class="problem-box"><div class="d-section-title" style="margin-bottom:6px;">The problem</div>Without monitoring, workflow failures are silent. This pair of workflows ensures nothing fails unnoticed — every error is immediately surfaced and permanently logged, and every morning a summary confirms whether all systems ran clean.</div><div class="d-section-title">Error Handler Pipeline</div><div class="pipeline-nodes"><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--red-dim);color:var(--red)">!</div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Error Trigger</div><div class="pipe-node-detail">fires on any connected workflow failure</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--green-dim);color:var(--green)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Notify Error (Telegram)</div><div class="pipe-node-detail">node name · error message · execution ID</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div></div><div class="pipe-right"><div class="pipe-node-name">Log Error to Sheet</div><div class="pipe-node-detail">timestamp · workflow · node · message · execution_id</div></div></div></div></div><div class="detail-sidebar"><div class="d-section-title">Tech stack</div><div class="stack-chips"><span class="stack-chip">n8n</span><span class="stack-chip">Google Sheets</span><span class="stack-chip">Telegram</span><span class="stack-chip">Docker</span></div><div class="d-section-title">Links</div><div class="sidebar-links"><a class="sidebar-btn" href="https://github.com/emhedge/n8n-workflow-health-monitor" target="_blank"><span class="sidebar-btn-icon"></span><span>GitHub repo</span><span class="sidebar-btn-arrow">›</span></a></div><div class="d-section-title">Key decisions</div><div class="decisions"><div class="decision"><div class="decision-q">Shared error workflow</div><div class="decision-a">One error handler covers all workflows — set once in each workflow's settings, no duplication.</div></div><div class="decision"><div class="decision-q">Structured log schema</div><div class="decision-a">Five fields gives enough context to debug any failure without being noisy.</div></div></div></div></div><div class="detail-footer"><button class="detail-nav-btn" onclick="showDetail('stock-bot')"> stock-news-digest</button><button class="detail-nav-btn" onclick="showDetail('homelab')">homelab </button></div></div>
+</div>
+
+<div class="detail-page" id="detail-homelab">
+  <div style="background:var(--surface);border-bottom:1px solid var(--border);"><div style="max-width:900px;margin:0 auto;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;"><div class="breadcrumb"><a onclick="showMain()">evyn.hedgpeth</a><span class="breadcrumb-sep">/</span><a onclick="showMain()">projects</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">homelab</span></div><div class="detail-status"><div class="status-dot"></div>running · self-hosted</div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-hero"><div class="detail-tags"><span class="ptag ptag-infra">infrastructure</span></div><div class="detail-title">Virtualized Network Homelab</div><div class="detail-desc">A Proxmox VE virtualization host behind a pfSense firewall, segmented into six isolated subnets with per-segment ACLs, DHCP, DNS, and NAT. Hosts Windows Active Directory, a Splunk SIEM, OpenVPN, and a suite of security tools.</div><div class="detail-meta"><div class="detail-meta-item">hypervisor <span>Proxmox VE</span></div><div class="detail-meta-item">firewall <span>pfSense</span></div><div class="detail-meta-item">subnets <span>6 isolated VLANs</span></div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;background:var(--surface);border-bottom:1px solid var(--border);"><div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-val">6</div><div class="detail-metric-label">subnets</div></div><div class="detail-metric"><div class="detail-metric-val">LXC+VM</div><div class="detail-metric-label">container types</div></div><div class="detail-metric"><div class="detail-metric-val">Splunk</div><div class="detail-metric-label">SIEM</div></div><div class="detail-metric"><div class="detail-metric-val">VPN</div><div class="detail-metric-label">remote access</div></div></div></div>
+  <div style="max-width:900px;margin:0 auto;"><div class="detail-body"><div class="detail-main"><div class="problem-box"><div class="d-section-title" style="margin-bottom:6px;">Why build this</div>A homelab is the fastest way to get hands-on with infrastructure concepts that are hard to practice in a work environment — network segmentation, SIEM tuning, AD administration, and vulnerability testing. This one is built to mirror an enterprise environment at small scale.</div><div class="d-section-title">Network topology</div><div class="pipeline-nodes"><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--red-dim);color:var(--red)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">pfSense Firewall</div><div class="pipe-node-detail">perimeter firewall · NAT · per-segment ACLs</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--accent-dim);color:var(--accent)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Proxmox VE Host</div><div class="pipe-node-detail">hypervisor · LXC containers + KVM VMs</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--amber-dim);color:var(--amber)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">6 Isolated Subnets</div><div class="pipe-node-detail">management · corporate · SOC · attack · development · VPN</div></div></div><div class="pipe-row"><div class="pipe-col-left"><div class="pipe-circle" style="background:var(--purple-dim);color:var(--purple)"></div><div class="pipe-vline"></div></div><div class="pipe-right"><div class="pipe-node-name">Services</div><div class="pipe-node-detail">Windows AD · Splunk SIEM · OpenVPN · Kali · Wireshark · Nmap</div></div></div></div></div><div class="detail-sidebar"><div class="d-section-title">Tech stack</div><div class="stack-chips"><span class="stack-chip">Proxmox VE</span><span class="stack-chip">pfSense</span><span class="stack-chip">LXC/KVM</span><span class="stack-chip">Linux</span><span class="stack-chip">Windows Server</span><span class="stack-chip">Active Directory</span><span class="stack-chip">Splunk</span><span class="stack-chip">OpenVPN</span><span class="stack-chip">Kali</span><span class="stack-chip">Wireshark</span><span class="stack-chip">Nmap</span></div><div class="d-section-title">Links</div><div class="sidebar-links"><a class="sidebar-btn" href="https://github.com/emhedge" target="_blank"><span class="sidebar-btn-icon"></span><span>GitHub</span><span class="sidebar-btn-arrow">›</span></a></div><div class="d-section-title">What I practice here</div><div class="decisions"><div class="decision"><div class="decision-q">Network segmentation</div><div class="decision-a">Keeping attack, SOC, and corporate subnets isolated prevents lateral movement between environments.</div></div><div class="decision"><div class="decision-q">SIEM tuning</div><div class="decision-a">Splunk ingests logs from across the lab — useful for building detection rules and understanding log formats.</div></div></div></div></div><div class="detail-footer"><button class="detail-nav-btn" onclick="showDetail('health-monitor')"> workflow-health-monitor</button><button class="detail-nav-btn" onclick="showMain()">back to projects</button></div></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
